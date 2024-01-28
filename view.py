@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
 
-@app.route('/suma',methods = ['POST'])
+@app.route('/suma_numeros',methods = ['POST'])
 def Suma():
     message = ""
     user_name = os.getenv("user_name")
