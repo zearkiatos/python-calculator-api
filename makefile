@@ -28,3 +28,6 @@ docker-down:
 
 docker-build:
 	docker build -t python-calculator-api:v0.0.1 .
+
+docker-run:
+	docker run -d -p 4000:4000 python-calculator-api:v0.0.1
