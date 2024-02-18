@@ -63,3 +63,11 @@ $ gcloud compute networks create vpn-tutoriales-misw --project=miso-cloud-native
 
 $ gcloud compute networks subnets create red-k8s-tutoriales --range=192.168.32.0/19 --network=vpn-tutoriales-misw --region=us-central1 --project=miso-cloud-native-414617
 ```
+
+```sh
+# Troubleshooting
+
+$ kubectl describe pod <nombre del pod>
+$ kubectl logs <nombre del pod> --all-containers
+$ kubectl get events
+```
