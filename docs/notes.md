@@ -47,3 +47,19 @@ $ docker push us-central1-docker.pkg.dev/miso-cloud-native-414617/python-calcula
 
 $ docker run -p 4000:4000 us-central1-docker.pkg.dev/miso-cloud-native-414617/python-calculator-api/python-calculator-api:1.0
 ```
+
+```sh
+# Creating a virtual network
+
+# gcloud compute networks create <RED> --project=<ID-PROYECTO> --subnet-mode=custom --mtu=<MTU> --bgp-routing-mode=regional
+
+$ gcloud compute networks create vpn-tutoriales-misw --project=miso-cloud-native-414617 --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional
+```
+
+```sh
+# Create a subnet for kubernetes
+
+# gcloud compute networks subnets create <NOMBRE-SUBRED> --range=<RANGO-IP> --network=<RED-PADRE> --region=<REGION> --project=<ID-PROYECTO>
+
+$ gcloud compute networks subnets create red-k8s-tutoriales --range=192.168.32.0/19 --network=vpn-tutoriales-misw --region=us-central1 --project=miso-cloud-native-414617
+```
