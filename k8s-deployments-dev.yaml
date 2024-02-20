@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: python-calculator-api
-          image: us-central1-docker.pkg.dev/miso-cloud-native-414617/python-calculator-api/python-calculator-api:2.2
+          image: caprilespe/python-calculator-api:1.0
           ports:
             - containerPort: 4000
           # Realizar pull siempre a la imagen
@@ -64,22 +64,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-calculatorv3-api
+  name: python-calculatorv2-api
   labels:
-    app: python-calculatorv3-api
+    app: python-calculatorv2-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: python-calculatorv3-api
+      app: python-calculatorv2-api
   template:
     metadata:
       labels:
-        app: python-calculatorv3-api
+        app: python-calculatorv2-api
     spec:
       containers:
-        - name: python-calculatorv3-api
-          image: us-central1-docker.pkg.dev/miso-cloud-native-414617/python-calculator-api/python-calculator-api:3.0
+        - name: python-calculatorv2-api
+          image: caprilespe/python-calculator-api:2.0
           ports:
             - containerPort: 4000
           imagePullPolicy: Always
@@ -87,7 +87,7 @@ spec:
 apiVersion: cloud.google.com/v1
 kind: BackendConfig
 metadata:
-  name: python-calculatorv3-config
+  name: python-calculatorv2-config
 spec:
   healthCheck:
     checkIntervalSec: 30
@@ -98,9 +98,9 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: python-calculatorv3-service
+  name: python-calculatorv2-service
   annotations:
-    cloud.google.com/backend-config: '{"default": "python-calculatorv3-config"}'
+    cloud.google.com/backend-config: '{"default": "python-calculatorv2-config"}'
 spec:
   type: NodePort
   selector:
@@ -118,9 +118,9 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: python-calculatorv3-ingress
+  name: python-calculatorv2-ingress
   labels:
-    name: python-calculatorv3-ingress
+    name: python-calculatorv2-ingress
 spec:
   rules:
   - http:
@@ -136,6 +136,6 @@ spec:
         path: /multiplicar
         backend:
           service:
-            name: python-calculatorv3-service
+            name: python-calculatorv2-service
             port: 
               number: 80
