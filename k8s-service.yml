@@ -36,6 +36,12 @@ spec:
       containers:
         - name: python-calculator-api
           image: us-central1-docker.pkg.dev/miso-cloud-native-414617/python-calculator-api/python-calculator-api:2.0
+          env:
+          - name: "SQLALCHEMY_DATABASE_URI"
+            valueFrom:
+              secretKeyRef:
+                name: appsecrets 
+                key: uri
           resources:
             requests:
               memory: "64Mi"
@@ -47,13 +53,6 @@ spec:
             - containerPort: 4000
           # Realizar pull siempre a la imagen
           imagePullPolicy: Always
-
-env:
-   - name: "SQLALCHEMY_DATABASE_URI"
-     valueFrom:
-       secretKeyRef:
-         name: appsecrets 
-         key: uri
 
 # Vamos a especificar el balanceador de carga en este mismo archivo
 # para ello vamos a crear otro documento separado, esto se hace con el operador "---"
