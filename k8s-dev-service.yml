@@ -15,7 +15,7 @@ metadata:
     app: python-calculator-api
 # Especificaciones del elemento
 spec:
-  replicas: 1
+  replicas: 3
   # K8s agrupa los elementos del Deployment y los interconecta entre si utilizando etiquetas
   # Aqui definimos como seleccionar los elementos juntos
   selector:
