@@ -71,4 +71,8 @@ $ kubectl describe pod <nombre del pod>
 $ kubectl logs <nombre del pod> --all-containers
 $ kubectl get events
 ```
-gcloud services vpc-peerings connect --service=servicenetworking.googleapis.com --ranges=red-dbs-tutoriales --network=vpn-tutoriales-misw --project=miso-cloud-native-414617
+
+```sh
+# To delete all deployments
+$ kubectl delete all --all -n default
+```
