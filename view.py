@@ -53,6 +53,22 @@ def Suma():
 
         return {"message": EscribirResultado(message, user_name, numero1, numero2), "result": numero1 + numero2}, 200
 
+@app.route('/multiplicar',methods = ['POST'])
+def Multiply():
+    message = ""
+    user_name = os.getenv("user_name")
+    
+    if request.method == 'POST':
+        try:
+            numero1, numero2 = request.json["num_1"], request.json["num_2"]
+        except:
+            return {"message": EscribirResultado("Indique dos numeros para ser multiplicados", user_name,None,None)}, 404
+        
+        message = f"multiplicacion de los dos numeros es: {numero1 * numero2}" 
+        message = user_name + " la " + message if user_name else "La " + message  
+
+        return {"message": EscribirResultado(message, user_name, numero1, numero2), "result": numero1 * numero2}, 200
+
 def EscribirResultado(message, user_name ,a ,b):
     write = "not_show" if not os.getenv("write_result") else os.getenv("write_result") 
     if write == "not_show" or not a or not b:
