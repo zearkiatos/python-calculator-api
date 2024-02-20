@@ -14,11 +14,13 @@ RUN pip install -r requirements.txt
 COPY . /app
 
 # Agregar variable de entorno con el nombre del estudiante
-ENV user_name Estudiante
+ENV user_name Student
 
 # Variable de entorno para escribir en txt dentro de la contenedora el resultado
 # Por defecto esta en false (No escribe txt en la contenedora)
 ENV write_result not_show
+
+ENV SQLALCHEMY_DATABASE_URI default
 
 # Configurar el contenedor para correr en una manera ejectuble
 ENTRYPOINT [ "python" ]
