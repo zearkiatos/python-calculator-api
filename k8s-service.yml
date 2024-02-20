@@ -48,6 +48,13 @@ spec:
           # Realizar pull siempre a la imagen
           imagePullPolicy: Always
 
+env:
+   - name: "SQLALCHEMY_DATABASE_URI"
+     valueFrom:
+       secretKeyRef:
+         name: appsecrets 
+         key: uri
+
 # Vamos a especificar el balanceador de carga en este mismo archivo
 # para ello vamos a crear otro documento separado, esto se hace con el operador "---"
 ---
