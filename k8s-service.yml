@@ -35,7 +35,7 @@ spec:
       #        configurado en K8s
       containers:
         - name: python-calculator-api
-          image: us-central1-docker.pkg.dev/miso-cloud-native-414617/python-calculator-api/python-calculator-api:1.0
+          image: us-central1-docker.pkg.dev/miso-cloud-native-414617/python-calculator-api/python-calculator-api:2.0
           resources:
             requests:
               memory: "64Mi"
