@@ -2,6 +2,7 @@
 
 from flask import Flask
 from flask import request
+import requests
 from os import environ
 from model.model import Number, db
 import os
@@ -77,6 +78,26 @@ def EscribirResultado(message, user_name ,a ,b):
     f.write(f"Hola {user_name}! Al sumar {a} y {b} se obtiene como resultado {a+b} ")
     f.close()
     return message
+
+@app.route('/exponencial',methods = ['POST'])
+def Exponencial():
+    multiplicacion_url = os.getenv("MULTIPLICACION_MS")
+    
+    if request.method == 'POST':
+        try:
+            numero , potencia = request.json["numero"], request.json["potencia"]
+        except:
+            return {"message": ""}
+
+        resultado = numero
+        for _ in range(potencia-1):
+            obj = {'num_1': resultado, 'num_2': numero}
+            req = requests.post(multiplicacion_url + '/multiplicar', json = obj)
+            if req.status_code != 200:
+                raise Exception(req.text)
+            resultado = req.json()["result"]
+
+        return {"message": f"Elevando {numero} a la {potencia} se obtiene {resultado}" , "result": resultado}, 200
 
 
 @app.route('/health',methods = ['GET'])

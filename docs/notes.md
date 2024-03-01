@@ -76,3 +76,21 @@ $ kubectl get events
 # To delete all deployments
 $ kubectl delete all --all -n default
 ```
+
+```sh
+# To delete all deployments
+$ kubectl delete all --all -n default
+```
+
+```sh
+# To delete the ingress
+# kubectl delete ingress <gateway-name>
+$ kubectl delete ingress python-calculatorv3-ingress
+```
+
+```sh
+# Connect to the container cluster
+# gcloud container clusters get-credentials <CLUSTER_NAME> --region <ZONE_NAME> --project <PROJECT_ID>
+
+$ gcloud container clusters get-credentials uniandes-misw-cloud-native-k8s --region us-central1 --project miso-cloud-native-414617
+```

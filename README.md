@@ -42,3 +42,15 @@ curl --location --request POST 'http://localhost:4000/suma' \
 }'
 
 ```
+
+```sh
+# Trying exponential
+
+$ curl --location --request POST 'http://34.49.246.5/exponencial' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "numero": 2,
+    "potencia": 2
+}'
+
+```
