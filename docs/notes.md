@@ -18,6 +18,16 @@ $ gcloud config set project miso-cloud-native
 ```
 
 ```sh
+# How to create a registry
+# For example
+
+$ gcloud artifacts repositories create cloud-native-registry \
+    --repository-format=docker \
+    --location=us-west1 \
+    --description="Docker images repository"
+```
+
+```sh
 # Authentication to artifactory registry
 # gcloud auth configure-docker <REGION>-docker.pkg.dev
 

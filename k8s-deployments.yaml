@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: python-calculator-api
-          image: us-central1-docker.pkg.dev/miso-cloud-native-414617/python-calculator-api/python-calculator-api:2.2
+          image: us-west1-docker.pkg.dev/qwiklabs-gcp-01-5b951c2791ec/cloud-native-registry/python-calculator-api:2.2
           ports:
             - containerPort: 4000
           # Realizar pull siempre a la imagen
@@ -76,7 +76,7 @@ spec:
     spec:
       containers:
         - name: python-calculatorv3-api
-          image: us-central1-docker.pkg.dev/miso-cloud-native-414617/python-calculator-api/python-calculator-api:3.0
+          image: us-west1-docker.pkg.dev/qwiklabs-gcp-01-5b951c2791ec/cloud-native-registry/python-calculator-api:2.2
           ports:
             - containerPort: 4000
           imagePullPolicy: Always
@@ -129,7 +129,7 @@ spec:
     spec:
       containers:
         - name: python-calculatorv4-api
-          image: us-central1-docker.pkg.dev/miso-cloud-native-414617/python-calculator-api/python-calculator-api:4.1 
+          image: us-west1-docker.pkg.dev/qwiklabs-gcp-01-5b951c2791ec/cloud-native-registry/python-calculator-api:2.2
           ports:
             - containerPort: 4000
           env:
