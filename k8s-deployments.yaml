@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: python-calculator-api
-          image: us-west1-docker.pkg.dev/qwiklabs-gcp-01-5b951c2791ec/cloud-native-registry/python-calculator-api:2.2
+          image: us-west1-docker.pkg.dev/qwiklabs-gcp-00-771605423c25/cloud-native-registry/python-calculator-api:2.2
           ports:
             - containerPort: 4000
           # Realizar pull siempre a la imagen
@@ -76,7 +76,7 @@ spec:
     spec:
       containers:
         - name: python-calculatorv3-api
-          image: us-west1-docker.pkg.dev/qwiklabs-gcp-01-5b951c2791ec/cloud-native-registry/python-calculator-api:2.2
+          image: us-west1-docker.pkg.dev/qwiklabs-gcp-00-771605423c25/cloud-native-registry/python-calculator-api:2.2
           ports:
             - containerPort: 4000
           imagePullPolicy: Always

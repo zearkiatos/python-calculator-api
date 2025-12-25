@@ -104,3 +104,26 @@ $ kubectl delete ingress python-calculatorv3-ingress
 
 $ gcloud container clusters get-credentials uniandes-misw-cloud-native-k8s --region us-central1 --project miso-cloud-native-414617
 ```
+# Observability
+
+## PromQL or MQL query
+
+```mql
+ fetch k8s_container
+ filter
+resource.project_id=
+"uandes-native"
+&& resource. namespace_name == "default"
+ { metric kubernetes.1o/container/cpu/ core usage_time
+ rate
+ every 1m
+ align next_older (2m) :
+metric kubernetes 10/container/ cpu/request_cores
+
+| align next_older(2m)|
+
+ group_by (resource. location, resource. cluster_name, resource.namespace_name, metadata. system_labels.top_level_controller_name, metadata. system_labels.top_level_controller_typel. .sun()
+outer_join e | div
+top 5
+scale '%"
+```
