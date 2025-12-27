@@ -188,3 +188,10 @@ $ helm uninstall prometheus -n monitoring
 
 ```
 
+# Scaleing with kubernetes
+
+```sh
+# Command for increase replicates
+
+$ kubectl scale deployment python-calculator-api --replicas=2
+```
