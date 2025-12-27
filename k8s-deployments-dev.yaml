@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: python-calculator-api
-          image: caprilespe/python-calculator-api:1.0
+          image: caprilespe/python-calculator-api:3.0.0
           ports:
             - containerPort: 4000
           # Realizar pull siempre a la imagen
@@ -79,7 +79,7 @@ spec:
     spec:
       containers:
         - name: python-calculatorv2-api
-          image: caprilespe/python-calculator-api:2.0
+          image: caprilespe/python-calculator-api:3.0.0
           ports:
             - containerPort: 4000
           imagePullPolicy: Always

@@ -35,7 +35,7 @@ spec:
       #        configurado en K8s
       containers:
         - name: python-calculator-api
-          image: caprilespe/python-calculator-api:1.0
+          image: caprilespe/python-calculator-api:3.0.0
           resources:
             requests:
               memory: "64Mi"
