@@ -127,3 +127,64 @@ outer_join e | div
 top 5
 scale '%"
 ```
+
+# Kubernetes command
+
+```sh
+# Create a namespace
+
+$ kubectl create namespace monitoring
+
+# Get namespace
+$ kubectl get namespace
+
+# Kubectl grafana forward port
+
+$ kubectl port-forward svc/monitoring-grafana 3000:80 -n monitoring
+
+# Forward prometheus 🔥 port
+
+$ kubectl port-forward svc/monitoring-kube-prometheus-prometheus  9090:9090 -n monitoring 
+
+# Kubectl get grafana password
+
+$ kubectl get secret monitoring-grafana -n monitoring -o jsonpath="{.data.admin-password}" | base64 --decod
+
+# Delete a namespace
+
+$ kubectl delete namespace monitoring
+```
+
+# Helm commands
+
+```sh
+# Adding community repository for charts
+
+$ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+# Adding an stable repository
+
+$ helm repo add stable https://charts.helm.sh/stable
+
+# Update repo
+
+$ helm repo update
+
+# Install helm in minikube
+
+$ helm install monitoring prometheus-community/kube-prometheus-stack
+
+# Install inside a specific namespace
+
+$ helm install monitoring prometheus-community/kube-prometheus-stack --namespace monitoring
+
+# List helm namespaces
+
+$ helm list --all-namespaces
+
+# Uninstall pods
+
+$ helm uninstall prometheus -n monitoring
+
+```
+
