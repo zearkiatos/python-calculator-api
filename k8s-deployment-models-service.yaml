@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-calculator-api
+  labels:
+    app: python-calculator-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-calculator-api
+  strategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 20%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: python-calculator-api
+    spec:
+      containers:
+        - name: python-calculator-api
+          image: caprilespe/python-calculator-api:3.0.0
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "270m"
+          ports:
+            - containerPort: 4000
+          imagePullPolicy: IfNotPresent
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: python-calculator-api-service
+spec:
+  type: ClusterIP
+  selector:
+    app: python-calculator-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 4000

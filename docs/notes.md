@@ -195,3 +195,15 @@ $ helm uninstall prometheus -n monitoring
 
 $ kubectl scale deployment python-calculator-api --replicas=2
 ```
+
+# Deployment models
+
+```sh
+# Delete all deployments
+
+$ kubectl delete all --all -n default
+
+# Delete ingress
+
+$ kubectl delete ingress python-calculatorv2-ingress
+```
